@@ -12,3 +12,27 @@ let isPressed = false;
 let color = "black";
 let x;
 let y;
+
+function updateSizeOnScreen() {
+  sizeEL.innerText = size;
+}
+
+increaseBtn.addEventListener("click", () => {
+  size += 5;
+
+  if (size > 50) {
+    size = 50;
+  }
+
+  updateSizeOnScreen();
+});
+
+decreaseBtn.addEventListener("click", () => {
+  size -= 5;
+
+  if (size < 5) {
+    size = 5;
+  }
+
+  updateSizeOnScreen();
+});
