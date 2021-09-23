@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>FAQ Accordeon</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>You can find answers for you here</h1>
+    <div class="container">
+      <div class="faq active">
+        <h3 class="faq-title">Как мне установить XAMPP?</h3>
+
+        <p class="faq-text">
+          Выберите ващу операционную систему и 32 или 64
+          битную версию. Измените разрешения для установщика
+          chmod 755 xampp-linux-*-installer.run Запустите
+          установщик sudo ./xampp-linux-*-installer.run Вот
+          и всё. XAMPP теперь установлен под каталогом
+          /opt/lampp.
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          Does XAMPP include MySQL or MariaDB?
+        </h3>
+
+        <p class="faq-text">
+          Since XAMPP 5.5.30 and 5.6.14, XAMPP ships MariaDB
+          instead of MySQL. The commands and tools are the
+          same for both.
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          Как я мне запустить XAMPP?
+        </h3>
+
+        <p class="faq-text">
+          Для запуска XAMPP просто выполните следующую
+          команду: sudo /opt/lampp/lampp start Теперь вы
+          должны видить чтото вроде этого на вашем экране:
+          Starting XAMPP 1.8.2... LAMPP: Starting Apache...
+          LAMPP: Starting MySQL... LAMPP started. Ready.
+          Apache and MySQL are running. Если вы получили
+          сообщение об ошибке посетите страницы нашего
+          сообщества для помощи. Кстати, заметьте что есть
+          графический инструмент который вы можете
+          использовать чтобы легко управлятся с вашими
+          серверами. Вы можете запустить этот инструмент с
+          помощью следующих команд: cd /opt/lampp sudo
+          ./manager-linux.run (or manager-linux-x64.run)
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          Как я мне остановить XAMPP?
+        </h3>
+
+        <p class="faq-text">
+          Для остановки XAMPP просто вызовите команду: sudo
+          /opt/lampp/lampp stop Теперь вы должны видить
+          чтото вроде этого на вашем экране: Stopping XAMPP
+          1.8.2... LAMPP: Stopping Apache... LAMPP: Stopping
+          MySQL... LAMPP stopped. Если вы получили сообщение
+          об ошибке посетите страницы нашего сообщества для
+          помощи. Кстати, заметьте что есть графический
+          инструмент который вы можете использовать чтобы
+          легко запустить или остановить ваши сервера. Вы
+          можете запустить этот инструмент с помощью
+          следующих команд: cd /opt/lampp sudo
+          ./manager-linux.run (or manager-linux-x64.run)
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          Как я мне проверить что всё сработало?
+        </h3>
+
+        <p class="faq-text">
+          Введите следующую URL в ваш любимый браузер:
+          http://localhost You should see the XAMPP start
+          page, as shown below.
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
