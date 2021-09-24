@@ -1,11 +1,11 @@
 const body = document.body;
-const slides = document.querySelectorAll(".slide");
-const leftBtn = document.getElementById("left");
-const rightBtn = document.getElementById("right");
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 
 let activeSlide = 0;
 
-rightBtn.addEventListener("click", () => {
+nextBtn.addEventListener('click', () => {
   activeSlide++;
 
   if (activeSlide > slides.length - 1) {
@@ -16,7 +16,7 @@ rightBtn.addEventListener("click", () => {
   setActiveSlide();
 });
 
-leftBtn.addEventListener("click", () => {
+prevBtn.addEventListener('click', () => {
   activeSlide--;
 
   if (activeSlide < 0) {
@@ -30,11 +30,14 @@ leftBtn.addEventListener("click", () => {
 setBgToBody();
 
 function setBgToBody() {
-  body.style.backgroundImage = slides[activeSlide].style.backgroundImage;
+  body.style.backgroundImage =
+    slides[activeSlide].style.backgroundImage;
 }
 
 function setActiveSlide() {
-  slides.forEach((slide) => slide.classList.remove("active"));
+  slides.forEach((slide) =>
+    slide.classList.remove('active')
+  );
 
-  slides[activeSlide].classList.add("active");
+  slides[activeSlide].classList.add('active');
 }
