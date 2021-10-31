@@ -40,12 +40,12 @@ body {
 
 .gradient-circle {
   background: conic-gradient(
-    #55b7a4 0%,
-    #4ca493 40%,
+    #687bce 0%,
+    #5e71c4 40%,
     #fff 40%,
     #fff 60%,
-    #336d62 60%,
-    #2a5b52 100%
+    #35458b 60%,
+    #2c3c80 100%
   );
   height: 320px;
   width: 320px;
