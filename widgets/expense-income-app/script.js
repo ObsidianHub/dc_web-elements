@@ -30,9 +30,15 @@ function addTransaction(e) {
 
     addTransactionToDOM(transaction);
 
+    updateLocalStorage();
+
     text.value = "";
     amount.value = "";
   }
+}
+
+function generateID() {
+  return Math.floor(Math.random() * 100000000);
 }
 
 // Render transaction
@@ -55,9 +61,29 @@ function addTransactionToDOM(transaction) {
   list.appendChild(item);
 }
 
-// Generate random ID
-function generateID() {
-  return Math.floor(Math.random() * 100000000);
+// Update the balance, income and expense
+function updateValues() {
+  const amounts = transactions.map((transaction) => transaction.amount);
+
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expense = (
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1
+  ).toFixed(2);
+
+  balance.innerText = `$${total}`;
+  money_plus.innerText = `$${income}`;
+  money_minus.innerText = `$${expense}`;
+}
+
+function updateLocalStorage() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 form.addEventListener("submit", addTransaction);
