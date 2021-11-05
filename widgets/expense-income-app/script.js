@@ -30,6 +30,8 @@ function addTransaction(e) {
 
     addTransactionToDOM(transaction);
 
+    updateValues();
+
     updateLocalStorage();
 
     text.value = "";
@@ -82,8 +84,27 @@ function updateValues() {
   money_minus.innerText = `$${expense}`;
 }
 
+// Remove transaction by ID
+function removeTransaction(id) {
+  transactions = transactions.filter((transaction) => transaction.id !== id);
+
+  updateLocalStorage();
+
+  init();
+}
+
 function updateLocalStorage() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
+
+// Init app
+function init() {
+  list.innerHTML = "";
+
+  transactions.forEach(addTransactionDOM);
+  updateValues();
+}
+
+init();
 
 form.addEventListener("submit", addTransaction);
