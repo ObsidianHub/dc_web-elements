@@ -4,7 +4,7 @@
   --primaryColor: #fff;
   --navColor1: #21292c;
   --navColor2: #551e81;
-  --navColor3: #cad351;
+  --navColor3: #359422;
   --navColor4: #281ebe;
   --navColor5: #a73333;
 }
@@ -56,38 +56,27 @@ nav ul {
 }
 
 nav ul li {
+  display: flex;
+  justify-content: center;
   height: 20%;
   overflow: hidden;
 }
 
 nav li a {
-  position: relative;
-  top: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 1;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
-  display: block;
-  text-align: center;
+  width: 100%;
+  transition: all 0.5s ease;
 }
 
 nav li a:hover {
   transform: scale(1.2);
-}
-
-nav li a::before {
-  content: "";
-  width: 25vw;
-  height: 3px;
-  background-color: #fff;
-  position: absolute;
-  top: 47.5%;
-  left: 0;
-  opacity: 0;
-}
-
-nav li a:hover::before {
-  opacity: 1;
 }
 
 nav li:nth-of-type(1) {
