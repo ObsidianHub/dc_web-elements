@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  max-height: 100vh;
   margin: 0;
   font-family: "Lato", sans-serif;
   color: #fff;
@@ -111,9 +111,10 @@ input[type="number"] {
 }
 
 .list {
+  height: 200px;
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  overflow-y: scroll;
 }
 
 .list li {
@@ -123,7 +124,7 @@ input[type="number"] {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px;
+  padding: 10px 22px;
   margin: 10px 0;
 }
 
@@ -145,7 +146,7 @@ input[type="number"] {
   padding: 2px 5px;
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 20px;
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
