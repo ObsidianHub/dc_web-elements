@@ -28,9 +28,31 @@ function addTransaction(e) {
 
     transactions.push(transaction);
 
+    addTransactionToDOM(transaction);
+
     text.value = "";
     amount.value = "";
   }
+}
+
+// Render transaction
+function addTransactionToDOM(transaction) {
+  const prefix = transaction.amount < 0 ? "-" : "+";
+
+  const item = document.createElement("li");
+
+  // Add class based on value
+  item.classList.add(transaction.amount < 0 ? "minus" : "plus");
+
+  item.innerHTML = `
+    ${transaction.text} 
+    <span>${prefix}${Math.abs(transaction.amount)}</span>
+    <button class="delete-btn" onclick="removeTransaction(${
+      transaction.id
+    })">x</button>
+  `;
+
+  list.appendChild(item);
 }
 
 // Generate random ID
