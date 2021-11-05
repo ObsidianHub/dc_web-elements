@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-image: url('bitcoin.jpg');
+  background-image: url("bitcoin.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #fff;
 }
 
@@ -21,7 +21,7 @@ body {
   margin: 30px auto;
   padding: 30px;
   width: 500px;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 h1 {
@@ -30,8 +30,8 @@ h1 {
 }
 
 h2 {
-    color: #000;
-    font-size: 30px;
+  color: #000;
+  font-size: 30px;
 }
 
 h3 {
@@ -82,8 +82,8 @@ label {
   margin: 10px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+input[type="text"],
+input[type="number"] {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;
