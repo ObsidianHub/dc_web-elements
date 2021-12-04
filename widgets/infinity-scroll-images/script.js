@@ -9,6 +9,7 @@ let ready = false,
   totalImages = 0,
   photosArray = [],
   initialLoad = true;
+loader.hidden = false;
 
 function imageLoaded() {
   imagesLoaded++;
@@ -66,6 +67,7 @@ window.addEventListener("scroll", () => {
     ready
   ) {
     ready = false;
+    loader.hidden = false;
     getPhotos();
   }
 });
