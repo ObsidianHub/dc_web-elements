@@ -119,6 +119,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 15px 15px 0 0;
   position: absolute;
+  height: 80px;
   top: 0;
   left: 20px;
   width: calc(100% - 40px);
@@ -136,6 +137,8 @@ body {
 
 .music-info h4 {
   margin: 0;
+  position: relative;
+  left: 17%;
 }
 
 .progress-container {
@@ -144,7 +147,9 @@ body {
   cursor: pointer;
   margin: 10px 0;
   height: 4px;
-  width: 100%;
+  width: 80%;
+  position: relative;
+  left: 17%;
 }
 
 .progress {
