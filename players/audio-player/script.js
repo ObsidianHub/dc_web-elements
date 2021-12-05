@@ -16,7 +16,6 @@ const songs = [
 let songNames = songs.map((el) => {
   return el.split("-").join(" ");
 });
-console.log(songNames);
 let songIndex = 0;
 
 loadSong(songs[songIndex], songNames[songIndex]);
