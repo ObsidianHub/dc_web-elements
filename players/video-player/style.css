@@ -21,8 +21,8 @@ h1 {
 
 .screen {
   cursor: pointer;
-  width: 500px;
-  margin-top: 100px;
+  width: 40%;
+  margin-top: 70px;
   background-color: #000 !important;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -31,13 +31,17 @@ h1 {
 .controls {
   background: #333;
   color: #fff;
-  width: 500px;
+  width: 40%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+
+.progress {
+  width: 75%;
 }
 
 .controls .btn {
