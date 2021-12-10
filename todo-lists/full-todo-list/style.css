@@ -4,3 +4,9 @@
 .notification-alert.show {
   display: block;
 }
+.empty-alert {
+  display: none;
+}
+.p-5-20 {
+  padding: 5px 20px;
+}
