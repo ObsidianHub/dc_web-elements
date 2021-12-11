@@ -13,6 +13,7 @@ const notification = Notification;
 // Init Ovservers
 const addTaskObserver = new EventObserver();
 const removeTaskObserver = new EventObserver();
+const editTaskObserver = new EventObserver();
 const removeAllTasksObserver = new EventObserver();
 
 // Init elements
@@ -29,6 +30,10 @@ addTaskObserver.subscribe(ui.checkList);
 removeTaskObserver.subscribe(localstorage.update);
 removeTaskObserver.subscribe(notification.show);
 removeTaskObserver.subscribe(ui.checkList);
+
+editTaskObserver.subscribe(localstorage.update);
+editTaskObserver.subscribe(notification.show);
+editTaskObserver.subscribe(ui.checkList);
 
 removeAllTasksObserver.subscribe(localstorage.update);
 removeAllTasksObserver.subscribe(notification.show);
@@ -59,7 +64,8 @@ form.addEventListener("submit", function (e) {
           class: "alert alert-success",
         })
       );
-    form.reset().focus();
+    form.reset();
+    form.focus();
   }
 });
 
@@ -77,7 +83,7 @@ ul.addEventListener("click", function (e) {
       );
   } else if (e.target.classList.contains("edit-item")) {
     e.target.classList.toggle("fa-save");
-    let id = e.target.closest("li").dataset.id;
+    let id = e.target.closest("li").getAttribute("data-id");
     let span = e.target.closest("li").querySelector("span");
 
     if (e.target.classList.contains("fa-save")) {
@@ -86,7 +92,15 @@ ul.addEventListener("click", function (e) {
     } else {
       span.setAttribute("contenteditable", false);
       span.blur();
-      editListItem(id, span.textContent);
+      tasks
+        .editTask(id, span.textContent)
+        .then(() => ui.editTask(id, span.textContent))
+        .then(() =>
+          editTaskObserver.fire({
+            text: "Задача успешно обновлена!",
+            class: "alert alert-warning",
+          })
+        );
     }
   }
 });

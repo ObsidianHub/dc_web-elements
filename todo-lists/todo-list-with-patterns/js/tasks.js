@@ -15,12 +15,22 @@ const Tasks = (function () {
 
   const addTask = async function (task) {
     task.id = id.generate();
-    await tasks.unshift(task);
+    tasks.push(task);
     return task;
   };
 
   const removeTask = async function (id) {
-    tasks = await tasks.filter((task) => task.id !== id);
+    tasks = tasks.filter((task) => task.id !== id);
+    return tasks;
+  };
+
+  const editTask = async function (id, newValue) {
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id === id) {
+        tasks[i].text = newValue;
+        break;
+      }
+    }
     return tasks;
   };
 
@@ -34,6 +44,7 @@ const Tasks = (function () {
       setTasks,
       addTask,
       removeTask,
+      editTask,
       removeAll,
     };
   };

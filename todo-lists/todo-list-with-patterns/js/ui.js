@@ -7,6 +7,7 @@ const UI = (function () {
     li.className = "list-group-item d-flex align-items-center";
     li.setAttribute("data-id", task.id);
     let span = document.createElement("span");
+    span.className = "p-5-20";
     span.textContent = task.text;
     // Create tag i fa-trash-alt
     let iDelete = document.createElement("i");
@@ -31,6 +32,11 @@ const UI = (function () {
     li.remove();
   };
 
+  const editTask = function (id, newValue) {
+    const liSpan = ul.querySelector(`[data-id=${id}] > span`);
+    liSpan.textContent = newValue;
+  };
+
   const checkList = function () {
     if (!ul.children.length) {
       emptyAlert.style.display = "block";
@@ -46,6 +52,7 @@ const UI = (function () {
   return {
     addTask,
     deleteTask,
+    editTask,
     checkList,
     deleteAll,
   };
