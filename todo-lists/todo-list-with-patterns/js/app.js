@@ -17,10 +17,10 @@ const editTaskObserver = new EventObserver();
 const removeAllTasksObserver = new EventObserver();
 
 // Init elements
-const form = document.forms["addTodoItem"];
-const inputText = form.elements["todoText"];
-const ul = document.querySelector(".list-group");
-const clearBtn = document.querySelector(".clear-btn");
+const form = document.forms['addTodoItem'];
+const inputText = form.elements['todoText'];
+const ul = document.querySelector('.list-group');
+const clearBtn = document.querySelector('.clear-btn');
 
 // Subscribe on add task event
 addTaskObserver.subscribe(localstorage.update);
@@ -39,7 +39,7 @@ removeAllTasksObserver.subscribe(localstorage.update);
 removeAllTasksObserver.subscribe(notification.show);
 removeAllTasksObserver.subscribe(ui.checkList);
 
-window.addEventListener("load", function (e) {
+window.addEventListener('load', function (e) {
   let ls = localstorage.getTasks();
   if (ls.length) {
     ls.forEach((task) => {
@@ -50,7 +50,7 @@ window.addEventListener("load", function (e) {
   }
 });
 
-form.addEventListener("submit", function (e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
   if (!inputText.value.trim()) {
     // show error, is-invalid
@@ -60,8 +60,8 @@ form.addEventListener("submit", function (e) {
       .then((task) => ui.addTask(task))
       .then(() =>
         addTaskObserver.fire({
-          text: "Новая задача добавлена успешно!",
-          class: "alert alert-success",
+          text: 'Новая задача добавлена успешно!',
+          class: 'alert alert-success',
         })
       );
     form.reset();
@@ -69,50 +69,50 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-ul.addEventListener("click", function (e) {
-  if (e.target.classList.contains("delete-item")) {
-    let id = e.target.closest("li").getAttribute("data-id");
+ul.addEventListener('click', function (e) {
+  if (e.target.classList.contains('delete-item')) {
+    let id = e.target.closest('li').getAttribute('data-id');
     tasks
       .removeTask(id)
       .then(() => ui.deleteTask(id))
       .then(() =>
         removeTaskObserver.fire({
-          text: "Задача удалена успешно!",
-          class: "alert alert-danger",
+          text: 'Задача удалена успешно!',
+          class: 'alert alert-danger',
         })
       );
-  } else if (e.target.classList.contains("edit-item")) {
-    e.target.classList.toggle("fa-save");
-    let id = e.target.closest("li").getAttribute("data-id");
-    let span = e.target.closest("li").querySelector("span");
+  } else if (e.target.classList.contains('edit-item')) {
+    e.target.classList.toggle('fa-save');
+    let id = e.target.closest('li').getAttribute('data-id');
+    let span = e.target.closest('li').querySelector('span');
 
-    if (e.target.classList.contains("fa-save")) {
-      span.setAttribute("contenteditable", true);
+    if (e.target.classList.contains('fa-save')) {
+      span.setAttribute('contenteditable', true);
       span.focus();
     } else {
-      span.setAttribute("contenteditable", false);
+      span.setAttribute('contenteditable', false);
       span.blur();
       tasks
         .editTask(id, span.textContent)
         .then(() => ui.editTask(id, span.textContent))
         .then(() =>
           editTaskObserver.fire({
-            text: "Задача успешно обновлена!",
-            class: "alert alert-warning",
+            text: 'Задача успешно обновлена!',
+            class: 'alert alert-warning',
           })
         );
     }
   }
 });
 
-clearBtn.addEventListener("click", function (e) {
+clearBtn.addEventListener('click', function (e) {
   tasks
     .removeAll()
     .then(() => ui.deleteAll())
     .then(() =>
       removeAllTasksObserver.fire({
-        text: "Все задачи были успешно удалены!",
-        class: "alert alert-warning",
+        text: 'Все задачи были успешно удалены!',
+        class: 'alert alert-warning',
       })
     );
 });

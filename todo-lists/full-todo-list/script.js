@@ -1,10 +1,10 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-let ul = document.querySelector(".list-group"),
-  emptyAlert = document.querySelector(".empty-alert"),
-  clear = document.querySelector(".clear-btn"),
-  form = document.forms["addTodoItem"],
-  inputText = form.elements["todoText"],
-  notificationAlert = document.querySelector(".notification-alert");
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let ul = document.querySelector('.list-group'),
+  emptyAlert = document.querySelector('.empty-alert'),
+  clear = document.querySelector('.clear-btn'),
+  form = document.forms['addTodoItem'],
+  inputText = form.elements['todoText'],
+  notificationAlert = document.querySelector('.notification-alert');
 
 function checkLocalStorage() {
   if (tasks.length) {
@@ -15,8 +15,8 @@ function checkLocalStorage() {
 }
 
 function generateId() {
-  let id = "";
-  let words = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+  let id = '';
+  let words = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 
   for (let i = 0; i < 15; i++) {
     let position = Math.floor(Math.random() * words.length);
@@ -27,9 +27,9 @@ function generateId() {
 
 function checkList() {
   if (!ul.children.length) {
-    emptyAlert.style.display = "block";
+    emptyAlert.style.display = 'block';
   } else {
-    emptyAlert.style.display = "none";
+    emptyAlert.style.display = 'none';
   }
 }
 
@@ -44,19 +44,19 @@ function generateList(tasksArray) {
 
 function listTemplate(task) {
   // create list item
-  let li = document.createElement("li");
-  li.className = "list-group-item d-flex align-items-center";
-  li.setAttribute("data-id", task.id);
-  let span = document.createElement("span");
-  span.className = "p-5-20";
+  let li = document.createElement('li');
+  li.className = 'list-group-item d-flex align-items-center';
+  li.setAttribute('data-id', task.id);
+  let span = document.createElement('span');
+  span.className = 'p-5-20';
   span.textContent = task.text;
 
   // create tag i fa-trash-alt
-  let iDelete = document.createElement("i");
-  iDelete.className = "fas fa-trash-alt delete-item ml-4";
+  let iDelete = document.createElement('i');
+  iDelete.className = 'fas fa-trash-alt delete-item ml-4';
   // create tag i fa-edit-alt
-  let iEdit = document.createElement("i");
-  iEdit.className = "fas fa-edit edit-item ml-auto";
+  let iEdit = document.createElement('i');
+  iEdit.className = 'fas fa-edit edit-item ml-auto';
 
   // append delete and edit icon to list item
   li.appendChild(span);
@@ -67,7 +67,7 @@ function listTemplate(task) {
 }
 
 function clearList() {
-  ul.innerHTML = "";
+  ul.innerHTML = '';
 }
 
 function addList(list) {
@@ -76,13 +76,13 @@ function addList(list) {
     text: list,
   };
   tasks.unshift(newTask);
-  ul.insertAdjacentElement("afterbegin", listTemplate(newTask));
+  ul.insertAdjacentElement('afterbegin', listTemplate(newTask));
 
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 
   message({
-    text: "Task added success",
-    cssClass: "alert-success",
+    text: 'Task added success',
+    cssClass: 'alert-success',
     timeout: 2000,
   });
 }
@@ -94,11 +94,11 @@ function deleteListItem(id) {
       break;
     }
   }
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 
   message({
-    text: "Task deleted success",
-    cssClass: "alert-danger",
+    text: 'Task deleted success',
+    cssClass: 'alert-danger',
     timeout: 3000,
   });
 }
@@ -110,11 +110,11 @@ function editListItem(id, newValue) {
       break;
     }
   }
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 
   message({
-    text: "Task updated success",
-    cssClass: "alert-warning",
+    text: 'Task updated success',
+    cssClass: 'alert-warning',
     timeout: 3000,
   });
 }
@@ -122,59 +122,58 @@ function editListItem(id, newValue) {
 function message(settings) {
   notificationAlert.classList.add(settings.cssClass);
   notificationAlert.textContent = settings.text;
-  notificationAlert.classList.add("show");
+  notificationAlert.classList.add('show');
 
   setTimeout(() => {
-    notificationAlert.classList.remove("show");
+    notificationAlert.classList.remove('show');
   }, settings.timeout);
 }
 
-ul.addEventListener("click", function (e) {
-  if (e.target.classList.contains("delete-item")) {
-    let parent = e.target.closest("li");
+ul.addEventListener('click', function (e) {
+  if (e.target.classList.contains('delete-item')) {
+    let parent = e.target.closest('li');
     let id = parent.dataset.id;
     // delete list item
     deleteListItem(id);
     parent.remove();
-  } else if (e.target.classList.contains("edit-item")) {
-    e.target.classList.toggle("fa-save");
-    let id = e.target.closest("li").dataset.id;
-    let span = e.target.closest("li").querySelector("span");
+  } else if (e.target.classList.contains('edit-item')) {
+    e.target.classList.toggle('fa-save');
+    let id = e.target.closest('li').dataset.id;
+    let span = e.target.closest('li').querySelector('span');
 
-    if (e.target.classList.contains("fa-save")) {
-      span.setAttribute("contenteditable", true);
+    if (e.target.classList.contains('fa-save')) {
+      span.setAttribute('contenteditable', true);
       span.focus();
     } else {
-      span.setAttribute("contenteditable", false);
+      span.setAttribute('contenteditable', false);
       span.blur();
       editListItem(id, span.textContent);
     }
   }
-  checkLocalStorage();
 });
 
-form.addEventListener("submit", function (e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
   if (!inputText.value) {
     // show error
-    inputText.classList.add("is-invalid");
+    inputText.classList.add('is-invalid');
   } else {
-    inputText.classList.remove("is-invalid");
+    inputText.classList.remove('is-invalid');
     addList(inputText.value);
     form.reset();
     checkList();
   }
 });
 
-inputText.addEventListener("keyup", function () {
+inputText.addEventListener('keyup', function () {
   if (inputText.value) {
-    inputText.classList.remove("is-invalid");
+    inputText.classList.remove('is-invalid');
   }
 });
 
-clear.addEventListener("click", () => {
+clear.addEventListener('click', () => {
   clearList();
-  localStorage.setItem("tasks", JSON.stringify((tasks = [])));
+  localStorage.setItem('tasks', JSON.stringify((tasks = [])));
   checkLocalStorage();
 });
 
