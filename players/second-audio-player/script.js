@@ -46,3 +46,34 @@ function pauseSong() {
 }
 
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+
+function loadSong(song) {
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  music.src = `music/${song.name}.mp3`;
+  img.src = `img/${song.name}.jpg`;
+}
+
+function prevSong() {
+  songIndex--;
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+function nextSong() {
+  songIndex++;
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
+  }
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+loadSong(songs[songIndex]);
+
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+music.addEventListener('ended', nextSong);
