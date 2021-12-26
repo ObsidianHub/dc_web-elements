@@ -22,7 +22,7 @@ h1 {
 
 .btn {
   cursor: pointer;
-  background-color: darksalmon;
+  background-color: lightseagreen;
   border: 0;
   border-radius: 4px;
   color: #fff;
@@ -63,7 +63,7 @@ select:focus {
 }
 
 .text-box select {
-  background-color: darksalmon;
+  background-color: lightseagreen;
   border: 0;
   color: #fff;
   font-size: 12px;
@@ -103,30 +103,32 @@ main {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+
   overflow: hidden;
   transition: box-shadow 0.2s ease-out;
 }
 
 .box.active {
-  box-shadow: 0 0 10px 5px darksalmon;
+  box-shadow: 0 0 10px 5px lightseagreen;
 }
 
 .box img {
   width: 100%;
   object-fit: cover;
-  height: 200px;
+  height: 250px;
 }
 
 .box .info {
-  background-color: darksalmon;
+  background-color: lightseagreen;
   color: #fff;
   font-size: 18px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   margin: 0;
   padding: 10px;
   text-align: center;
-  height: 100%;
+  height: auto;
+  min-height: 90px;
 }
 
 @media (max-width: 1100px) {
