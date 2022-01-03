@@ -1,60 +1,22 @@
-const addBtn = document.getElementById("add"),
-  notes = JSON.parse(localStorage.getItem("notes"));
+const modal = document.getElementById('modal'),
+  modalShow = document.getElementById('show-modal'),
+  modalClose = document.getElementById('close-modal'),
+  bookmarkForm = document.getElementById('bookmark-form'),
+  websiteNameEl = document.getElementById('website-name'),
+  websiteUrlEl = document.getElementById('website-url'),
+  bookmarksContainer = document.getElementById('bookmarks-container');
 
-if (notes) {
-  notes.forEach((note) => addNewNote(note));
+let bookmarks = [];
+
+function showModal() {
+  modal.classList.add('show-modal');
+  websiteNameEl.focus();
 }
 
-function addNewNote(text = "") {
-  const note = document.createElement("div");
-  note.classList.add("note");
-
-  note.innerHTML = `
-        <div class="tools">
-            <button class="edit"><i class="fas fa-edit"></i></button>
-            <button class="delete"><i class="fas fa-trash-alt"></i></button>
-        </div>
-
-        <div class="main ${text ? "" : "hidden"}"></div>
-        <textarea class="${text ? "hidden" : ""}"></textarea>
-    `;
-
-  const editBtn = note.querySelector(".edit"),
-    deleteBtn = note.querySelector(".delete"),
-    main = note.querySelector(".main"),
-    textArea = note.querySelector("textarea");
-
-  textArea.value = text;
-  main.innerHTML = marked(text);
-
-  deleteBtn.addEventListener("click", () => {
-    note.remove();
-
-    updateLocalStorage();
-  });
-
-  editBtn.addEventListener("click", () => {
-    main.classList.toggle("hidden");
-    textArea.classList.toggle("hidden");
-  });
-
-  textArea.addEventListener("input", (e) => {
-    const { value } = e.target;
-
-    main.innerHTML = marked(value);
-
-    updateLocalStorage();
-  });
-
-  document.body.appendChild(note);
-}
-
-function updateLocalStorage() {
-  const notesText = document.querySelectorAll("textarea");
-  const notes = [];
-
-  notesText.forEach((note) => notes.push(note.value));
-  localStorage.setItem("notes", JSON.stringify(notes));
-}
-
-addBtn.addEventListener("click", () => addNewNote());
+modalShow.addEventListener('click', showModal);
+modalClose.addEventListener('click', () =>
+  modal.classList.remove('show-modal')
+);
+window.addEventListener('click', (e) =>
+  e.target === modal ? modal.classList.remove('show-modal') : false
+);
